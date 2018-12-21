@@ -1,0 +1,324 @@
+<h1 id="complexity">Complexity</h1>
+<hr />
+<h3 id="measuring-complexity">Measuring Complexity</h3>
+<ol type="1">
+<li>Just Run a program and see</li>
+<li>Count the number of instructions it would require</li>
+<li>Come up with an approximate technique
+<ul>
+<li>We have to implement an algorithm</li>
+<li>It might take different amounts for different inputs</li>
+<li>It will probably be faster on faster computers</li>
+</ul></li>
+</ol>
+<p>Experiment 1:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">def</span> count2sum(a):</a>
+<a class="sourceLine" id="cb1-3" title="3">    N <span class="op">=</span> <span class="bu">len</span>(a)</a>
+<a class="sourceLine" id="cb1-4" title="4"></a>
+<a class="sourceLine" id="cb1-5" title="5">    count <span class="op">=</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N):</a>
+<a class="sourceLine" id="cb1-7" title="7">        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(N):</a>
+<a class="sourceLine" id="cb1-8" title="8">            <span class="cf">if</span> a[i] <span class="op">+</span> a[j] <span class="op">==</span> <span class="dv">0</span>:</a>
+<a class="sourceLine" id="cb1-9" title="9">                count <span class="op">+=</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-10" title="10">    <span class="cf">return</span> count</a></code></pre></div>
+<p>Experiment 2:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1"></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw">def</span> counteven(N):</a>
+<a class="sourceLine" id="cb2-3" title="3">    count <span class="op">=</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb2-4" title="4">    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, N <span class="op">+</span> <span class="dv">1</span>):</a>
+<a class="sourceLine" id="cb2-5" title="5">        <span class="cf">if</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</a>
+<a class="sourceLine" id="cb2-6" title="6">            count <span class="op">+=</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb2-7" title="7">    <span class="cf">return</span> count</a></code></pre></div>
+<p>Experiment 3:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1"></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">def</span> sum3(a):</a>
+<a class="sourceLine" id="cb3-3" title="3">    N <span class="op">=</span> <span class="bu">len</span>(a)</a>
+<a class="sourceLine" id="cb3-4" title="4"></a>
+<a class="sourceLine" id="cb3-5" title="5">    count <span class="op">=</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb3-6" title="6">    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N):</a>
+<a class="sourceLine" id="cb3-7" title="7">        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i <span class="op">+</span> <span class="dv">1</span>, N):</a>
+<a class="sourceLine" id="cb3-8" title="8">            <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(j <span class="op">+</span> <span class="dv">1</span>, N):</a>
+<a class="sourceLine" id="cb3-9" title="9">                <span class="cf">if</span> a[i] <span class="op">+</span> a[j] <span class="op">+</span> a[k] <span class="op">==</span> <span class="dv">0</span>:</a>
+<a class="sourceLine" id="cb3-10" title="10">                    count <span class="op">+=</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb3-11" title="11">    <span class="cf">return</span> count</a></code></pre></div>
+<p>Experiment 4:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1"></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw">def</span> counteven(N):</a>
+<a class="sourceLine" id="cb4-3" title="3">    <span class="co"># Half the numbers will be even</span></a>
+<a class="sourceLine" id="cb4-4" title="4">    <span class="co"># The other half are odd</span></a>
+<a class="sourceLine" id="cb4-5" title="5">    count <span class="op">=</span> N<span class="op">//</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb4-6" title="6">    <span class="cf">return</span> count</a></code></pre></div>
+<hr />
+<h2 id="classifications">Classifications</h2>
+<ul>
+<li>We can classify algorithms based on their performance
+<ol type="1">
+<li>Quadratic
+<ul>
+<li>Runtime proportional to N^2</li>
+</ul></li>
+<li>Linear
+<ul>
+<li>Runtime proportional to N</li>
+</ul></li>
+<li>Cubic
+<ul>
+<li>Runtime proportional to N^3</li>
+</ul></li>
+<li>Linear
+<ul>
+<li>Runtime is proportional to 1</li>
+</ul></li>
+</ol></li>
+</ul>
+<h3 id="constant-factors">Constant Factors</h3>
+<ul>
+<li>Generally constant factors are not important, that is one quadratic algorithm could be twice as fast as another
+<ul>
+<li>They are both still quadtratic</li>
+<li>We are interested in the performance relative to N</li>
+</ul></li>
+</ul>
+<h3 id="lower-terms">Lower terms</h3>
+<ul>
+<li>The runtime could be proportionals to N^2 + 4N + 20
+<ul>
+<li>We ignore the N and the 20 becuase there is N^2 which is going to dominate as N gets large</li>
+<li>Just take the highest power as it is what will dictate the runtime as N increases</li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="big-o-notation">Big O Notation</h2>
+<ul>
+<li>Big O Notation is used to classify running times
+<ul>
+<li>O(N^2) - Quadratic</li>
+<li>O(N^3) - Cubic</li>
+<li>O(N) - Linear</li>
+<li>O(1) - Constant</li>
+</ul></li>
+</ul>
+<h3 id="worst-case">Worst Case</h3>
+<ul>
+<li>In theory, Big O Notation is for the worst case, so saying an algorithm is O(N^3) means it will not be worse than O(N^3)
+<ul>
+<li>You could say that an O(1) algorith is O(N^3)</li>
+<li>You could not say that an O(N^3) algorithm is O(1)</li>
+</ul></li>
+</ul>
+<h3 id="algorithm-classes">Algorithm Classes</h3>
+<table>
+<thead>
+<tr class="header">
+<th>O-Notation</th>
+<th>Description</th>
+<th>Speed</th>
+<th>n = 1000</th>
+<th>N = 1000000</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>O(1)</td>
+<td>Constant</td>
+<td>Instant</td>
+<td>10^-9 secs</td>
+<td>10^-9 secs</td>
+</tr>
+<tr class="even">
+<td>O(n)</td>
+<td>Linear</td>
+<td>Fast</td>
+<td>10^-6 secs</td>
+<td>10^-3 secs</td>
+</tr>
+<tr class="odd">
+<td>O(N^2)</td>
+<td>Quadratic</td>
+<td>Slow for Large N</td>
+<td>10^-3 secs</td>
+<td>10^3 secs</td>
+</tr>
+<tr class="even">
+<td>O(N^3)</td>
+<td>Cubic</td>
+<td>Slow for medium N</td>
+<td>1 second</td>
+<td>10^9 secs</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="examining-code">Examining Code</h2>
+<ul>
+<li>It’s easier if to not have to run an experiment everytime you run a program</li>
+<li>Generally, everytime we go over an input, the runtime is multiplied by N.
+<ul>
+<li>If we examine the input once, the algorithm will be O(N)</li>
+<li>If for each item in the input, we check every other item in the input, then the algorithm is O(N^2)</li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="logarithmic-and-exponential">Logarithmic and Exponential</h2>
+<ul>
+<li>There are two more important classes of algorithm
+<ol type="1">
+<li>Logarithmic
+<ul>
+<li>The input is split in half every time (e.g. Binary Search)</li>
+</ul></li>
+<li>Exponential
+<ul>
+<li>The runtime doubles each time N increases by 1</li>
+</ul></li>
+</ol></li>
+</ul>
+<h3 id="logarithmic">Logarithmic</h3>
+<ul>
+<li>Very Fast
+<ul>
+<li>Sample values:</li>
+</ul></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>N</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1000</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>1000000</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>1000000000</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+<p>The log of a number rises very slowly, Doing a binary search on an array of 1000000 elements is only 20 times longer than a binary search of an array of 1 element.</p>
+<h3 id="nlogn">N*Log(N)</h3>
+<ul>
+<li>Nlog(N), O(N log N), N log(N)
+<ul>
+<li>Linearithmic
+<ul>
+<li>very close to linear</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="exponential">Exponential</h3>
+<ul>
+<li>2^N
+<ul>
+<li>The runtime doubles each time N is increased by 1</li>
+</ul></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>N</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10</td>
+<td>1000</td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td>1000000</td>
+</tr>
+<tr class="odd">
+<td>30</td>
+<td>1000000000</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>When N is 30, the operation takes the order of a second. When N is 40 it takes 1000 seconds (15 minutes)</li>
+<li>N = 50 requires 1000 * 15 minutes ( approx 250 hours or 10 days )</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>O-Notation</th>
+<th>Description</th>
+<th>Speed</th>
+<th>~Time for n=1000</th>
+<th>~time for n=1000000</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>O(1)</td>
+<td>Constant</td>
+<td>Instant</td>
+<td>10^-9 secs</td>
+<td>10^-9 secs</td>
+</tr>
+<tr class="even">
+<td>O(logN)</td>
+<td>Logarithmic</td>
+<td>Very Fast</td>
+<td>10^-8 secs</td>
+<td>10^-8 secs</td>
+</tr>
+<tr class="odd">
+<td>O(N)</td>
+<td>Linear</td>
+<td>Fast</td>
+<td>10^-6 secs</td>
+<td>10^-3 secs</td>
+</tr>
+<tr class="even">
+<td>O(NlogN)</td>
+<td>Linearithmic</td>
+<td>Fast</td>
+<td>10^-5 secs</td>
+<td>10^-3 secs</td>
+</tr>
+<tr class="odd">
+<td>O(N^2)</td>
+<td>Quadratic</td>
+<td>Slow for Large N</td>
+<td>10^-3 secs</td>
+<td>10^3 secs</td>
+</tr>
+<tr class="even">
+<td>O(N^3)</td>
+<td>Cubic</td>
+<td>Slow for Medium N</td>
+<td>1 second</td>
+<td>10^9 secs</td>
+</tr>
+<tr class="odd">
+<td>O(2^N)</td>
+<td>Exponential</td>
+<td>Extremely Slow</td>
+<td>10^301 secs</td>
+<td>-&gt; secs</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="types-of-data">Types of Data</h2>
+<ul>
+<li>The runtime complexity can depend on the actual data
+<ul>
+<li>Not just the size on the dataset (N)</li>
+<li>In this case we can talk about best case</li>
+<li>Or worst case</li>
+<li>Or average case</li>
+</ul></li>
+<li>Worst case is usually considered</li>
+</ul>
+<hr />
