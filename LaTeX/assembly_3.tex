@@ -1,0 +1,95 @@
+\documentclass{article}
+\title{IO ports and Control Flow}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+  \rule{.5\textwidth}{0.4pt}
+\end{center}
+
+\section{IO Devices}
+\begin{itemize}
+  \item{Every IO device has a unique number when connected}
+  \item{This number is called a \textbf{\textit{Port}}}
+  \item{To send a byte to an IO device:}
+  \begin{enumerate}
+    \item{Put byte you want into AL}
+    \item{Use the \textit{OUT} \textbf{\textit{Port}} instruction}
+  \end{enumerate}
+  \item{To read a byte from an IO device:}
+  \begin{enumerate}
+    \item{Use the \textit{IN} \textbf{\textit{Port}} instruction}
+  \end{enumerate}
+  \item{Not every IO device has read/write operations}
+  \item{Some are for reading bytes}
+  \begin{itemize}
+    \item{Keyboard}
+  \end{itemize}
+  \item{Some are for writing bytes}
+  \begin{itemize}
+    \item{LED}
+  \end{itemize}
+  \item{Some are for both reading and writing}
+  \begin{itemize}
+     \item{Network Card}
+  \end{itemize}
+\end{itemize}
+
+\begin{center}
+  \rule{.5\textwidth}{0.4pt}
+\end{center}
+
+\section{Simple Keyboard}
+\begin{itemize}
+  \item{\textbf{\textit{Port}} for the simple keyboard is \textit{00}}
+  \item{When activated, it allows you to get a keypress from the user}
+  \item{You can read from the divice by using \textit{IN 00}}
+  \item{This will block your program until the user presses a key}
+  \item{The ASCII value of the key pressed will appear in \textit{AL}}
+\end{itemize}
+
+\begin{center}
+  \rule{.5\textwidth}{0.4pt}
+\end{center}
+
+\section{Control Flow}
+\begin{itemize}
+  \item{While Loop}
+  \begin{itemize}
+    \item{While Loops can be simulated using:}
+    \begin{enumerate}
+      \item{Labels}
+      \item{\textit{CMP} instructions}
+      \item{Jumps}
+    \end{enumerate}
+  \end{itemize}
+  \item{Do While Loop}
+  \begin{itemize}
+    \item{Similar to While Loops}
+    \item{this time we want to guarantee that the main body of the loop executes}
+    \item{This is a case of moving th test that exits the loop at the end}
+  \end{itemize}
+  \item{If Statement}
+  \begin{itemize}
+    \item{Used to test for a condition}
+    \item{\textit{If} the test passed, we execute the conditional code}
+    \item{We then carry on as before}
+  \end{itemize}
+  \item{If-Else Statement}
+  \begin{itemize}
+    \item{Similar to the If Statement}
+    \item{This time, if the test passes, we do one branch}
+    \item{otherwise we do another branch}
+  \end{itemize}
+  \item{If-Else-If Statement}
+  \begin{itemize}
+    \item{Same as If-Else Statement, except with more branches}
+  \end{itemize}
+\end{itemize}
+
+\begin{center}
+  \rule{.5\textwidth}{0.4pt}
+\end{center}
+
+\end{document}

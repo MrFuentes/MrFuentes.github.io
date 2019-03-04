@@ -1,0 +1,49 @@
+% !TEX root = \path\to\root\file.tex
+\documentclass{article}
+\title{Memory Mapping}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+  \rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\section{Memory Mapping}
+\begin{itemize}
+  \item{The CPU has an \textbf{\textit{Address Space}}}
+  \item{This \textbf{\textit{Address Space}} is the range of addresses the CPU can work with}
+  \item{The \textbf{\textit{Address Space}} is defined by the number of lines in the address bus}
+  \item{Some of our addresses are used for dealing with memory mapped devices}
+  \begin{itemize}
+    \item{This means the devices is linked to a specific memory location}
+  \end{itemize}
+  \item{Advantages of memory mapping:}
+  \begin{itemize}
+    \item{Very easy to program by treating the devices as a memory location}
+  \end{itemize}
+  \item{Disadvantages of memory mapping:}
+  \begin{itemize}
+    \item{You lose certain memory locations the the IO devices}
+  \end{itemize}
+\end{itemize}
+
+\begin{center}
+  \rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\section{The VDU}
+\begin{itemize}
+  \item{SMS32's VDU is a memory mapped device}
+  \item{It is technically \textbf{\textit{Write-Only}}}
+  \item{It uses the address space from \textit{C0}-\textit{FF}}
+  \item{It accepts hexadecimal bytes}
+  \item{It displays the ASCII equivalent character}
+  \item{the screen is 4 rows of 16 characters}
+\end{itemize}
+
+\begin{center}
+  \rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\end{document}

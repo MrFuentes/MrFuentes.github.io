@@ -1,0 +1,112 @@
+\documentclass{article}
+\usepackage{listings}
+\title{Graphs and Algorithms}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+  \rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\section{Graphs}
+\begin{itemize}
+  \item{A graph is a $pair(v,e)$ where $v$ is a set of nodes called \textit{vertices} and $e$ is a collection of pairs of vertices, called \textit{edges}}
+  \item{Vertices and Edges are positions and store elements}
+  \item{insert graph example here}
+\end{itemize}
+
+\begin{center}
+  \rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\section{Edge Types}
+\begin{enumerate}
+  \item{Directed Edge}
+  \begin{itemize}
+    \item{Ordered pair of vertices$(u,v)$}
+    \item{First vertex $u$ is the origin}
+    \item{Second vertex $v$ is the destination}
+    \item{e.g. a flight}
+  \end{itemize}
+  \item{Undirected Edge}
+  \begin{itemize}
+    \item{Unordered pair of vertices$(u,v)$}
+    \item{e.g. a flight route}
+  \end{itemize}
+  \item{Directed Path}
+  \begin{itemize}
+    \item{All edges are directed}
+    \item{e.g. a route network}
+  \end{itemize}
+  \item{Undirected Path}
+  \begin{itemize}
+    \item{All the edges are undirected}
+    \item{e.g. a flight network}
+  \end{itemize}
+\end{enumerate}
+
+\begin{center}
+  \rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\section{Subgraphs}
+\begin{itemize}
+  \item{A \textbf{\textit{subgraph}} $S$ of a graph $G$ is such that}
+  \begin{itemize}
+    \item{The vertices of $S$ are a subset of the vertices of $G$}
+    \item{The edges of $S$ are a subset of the edges of $G$}
+  \end{itemize}
+  \item{A \textbf{\textit{spanning subgraph}} of $G$ is a subgraph that contains all the vertices of $G$, but not necessarily all the edges of $G$}
+\end{itemize}
+
+\begin{center}
+  \rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\section{Connectivity}
+\begin{itemize}
+  \item{A graph is considered \textbf{\textit{Connected}} if there is a path between every pair of vertices}
+  \item{A \textbf{\textit{Connected Component}} of a graph $G$ is a maximal connected subgraph of $G$}
+\end{itemize}
+
+\begin{center}
+  \rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\section{Trees and Forests}
+\begin{itemize}
+  \item{A $(free)$ \textbf{\textit{tree}} is an undirected graph $T$ such that}
+  \begin{itemize}
+    \item{$T$ is connected}
+    \item{$T$ has no cycles}
+    \item{Note that a free tree is different from a rooted tree}
+  \end{itemize}
+  \item{A \textbf{\textit{forest}} is an undirected graph without cycles}
+  \begin{itemize}
+    \item{The connected components of a forest are trees}
+  \end{itemize}
+  \item{A \textbf{\textit{spanning tree}} of a connected graph is a spanning subgraph that is a tree}
+  \begin{itemize}
+    \item{Is not unique unless the graph is a tree}
+  \end{itemize}
+  \item{A \textbf{\textit{spanning forest}} of a graph is a spanning subgraph that is a forest}
+\end{itemize}
+
+\begin{center}
+  \rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\section{Depth-First Search}
+\begin{itemize}
+  \item{Depth-First Search $(DFS)$ is a general technique for traversing a graph}
+  \item{A DFS traversal of a graph $G$}
+  \begin{itemize}
+    \item{Visits all the vertices and edges of $G$}
+    \item{Determines whether $G$ is connected}
+    \item{Computes the connected components of $G$}
+    \item{Computes a Spanning Forest of $G$}
+  \end{itemize}
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage{listings}
+
+\title{Sorting Algorithms}
+
+
+\begin{document}
+\maketitle
+
+\begin{center}
+  \rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\section{Sorting Algorithms}
+\begin{itemize}
+  \item{Insertion Sort}
+  \begin{itemize}
+    \item{Starts by assuming the item in position 0 is already sorted}
+    \item{On each pass, for $n-1$ passes for a list of $n$ items, the current item is checked against those already in the sorted sublist}
+    \item{We shift the elements greater than the current element to the right}
+    \item{When we reach an item that's smaller than the current, the current item is inserted}
+    \item{$O(n^2)$}
+  \end{itemize}
+  \begin{lstlisting}[language=Python, frame=single]
+  def insertionSort(alist):
+      for i in range(1, len(alist)):
+          key = alist[i]
+          j = i-1
+          while j>=0 and key < alist[j]:
+              alist[j+1] = alist[j]
+              j -= 1
+          alist[j+1] = key
+  \end{lstlisting}
+  \pagebreak
+  \item{Selction Sort}
+  \begin{itemize}
+    \item{Looks for the largest value as it makes the first pass}
+    \item{After the first pass, it puts that value into the correct position}
+    \item{The same is done for the next largest value until all values are in order}
+    \item{This process takes $n-1$ passes to sort a list of $n$ items}
+    \item{$O(n^2)$}
+  \end{itemize}
+  \begin{lstlisting}[language=Python, frame=single]
+  def selectionSort(alist):
+      for i in range(len(alist)-1, 0, -1):
+          max_pos = 0
+          for j in range(1,i+1):
+              if alist[j] > alist[max_pos]:
+                  max_pos = j
+
+          tmp = alist[i]
+          alist[i] = alist[max_pos]
+          alist[max_pos] = tmp
+  \end{lstlisting}
+  \item{Quick Sort}
+  \begin{itemize}
+    \item{In Quick Sort, the array is divided into sub arrays}
+    \begin{itemize}
+      \item{This is done by taking an element, called the pivot, and making one subarray containing all elements smaller than the pivot, and one containing the elements larger than the pivot}
+    \end{itemize}
+    \item{After the pivot $(r)$ is chosen, and moved to the end of the array, counter $i$ is set to $-1$ and counter $j$ is set to $0$}
+    \item{Counter $j$ will run from the first element to $r-1$}
+    \item{A comparison is them made between the element at position $j$ and $r$ (the counter)}
+    \begin{itemize}
+      \item{If the element at $j$ is larger than $r$, $j$ increases by one}
+      \item{If the element at $j$ is smaller than $r$, $i$ increase by one, then the elements at position $i$ and position $j$ swap, then $j$ increases by one}
+    \end{itemize}
+    \item{this is then repeated until $j$ reaches the last element}
+    \item{At this point, $r$'s position in the list will be at $i+1$}
+    \item{This process is then repeated recursively for each sub array, until the list is sorted}
+    \item{$O(nlogn)$ - average case}
+    \item{$O{n^2}$ - worst case}
+  \end{itemize}
+  \begin{lstlisting}[language=Python, frame=single]
+  def quicksort(alist):
+      n = len(alist)
+      if n < 2:
+        return
+      p = alist[0]
+
+  \end{lstlisting}
+\end{itemize}
+
+\begin{center}
+  \rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\section{Merge Sort}
+\begin{itemize}
+\end{itemize}
+
+\end{document}

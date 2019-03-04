@@ -1,0 +1,47 @@
+\documentclass{article}
+\title{Procedures}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+  \rule{.5\textwidth}{0.4pt}
+\end{center}
+
+\section{Using Procedures}
+\begin{itemize}
+  \item{To write a procedure}
+  \begin{itemize}
+    \item{You need to put the procedure code somewhere e.g. ORG 50}
+    \item{You need to put a RET at the end of the procedure}
+  \end{itemize}
+  \item{To use a procedure}
+  \begin{itemize}
+    \item{CALL the address where the procedure is located e.g. CALL 50}
+  \end{itemize}
+\end{itemize}
+
+\begin{center}
+  \rule{.5\textwidth}{0.4pt}
+\end{center}
+
+\section{Backing Up Registers}
+\begin{itemize}
+  \item{Like most code, our procedure uses registers}
+  \begin{itemize}
+    \item{$AL$ and $BL$ in this case}
+  \end{itemize}
+  \item{Which means we could have a problem, since the procedure might modify the registers which are being used by the program}
+  \item{To prevent this, we use the stack to save the registers at the start of the procedure by using PUSH AL PUSH BL}
+  \item{We can then restore these backed up registers from the stack using POP BL POP AL}
+  \begin{itemize}
+    \item{Note the order they are being popped, since it is a stack}
+  \end{itemize}
+  \item{We can then use RET and continue the program with the original registers}
+\end{itemize}
+
+\begin{center}
+  \rule{.5\textwidth}{0.4pt}
+\end{center}
+
+\end{document}

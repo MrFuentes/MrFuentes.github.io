@@ -1,0 +1,132 @@
+\documentclass{article}
+\usepackage{listings}
+
+\title{Hashing, Collisions, Sets, and Maps}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+  \rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\section{Hashing}
+\begin{itemize}
+  \item{A hashing function is a function which generates an integer value from an item}
+  \begin{itemize}
+    \item{An array, called \textit{table}, is create and the index of the item will be:}
+    \begin{lstlisting}[language=Python]
+    abs(hashcode) % len{table}
+    \end{lstlisting}
+    \item{Now the table can be immediately examined to see whether the item is present or not}
+  \end{itemize}
+\end{itemize}
+
+\begin{center}
+  \rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\section{Collisions}
+\begin{itemize}
+  \item{A problem with hashing is that two different items may have the same index, this is called a \textit{Collision}}
+  \item{A solution to \textit{Collisions} is:}
+  \begin{itemize}
+    \item{Open addressing}
+    \begin{itemize}
+      \item{find another address}
+    \end{itemize}
+    \item{Chaining}
+    \begin{itemize}
+      \item{Linked list at each table entry}
+      \item{Simply append items to the linked list}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\begin{center}
+  \rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\section{Code for implementing HashSets}
+\begin{lstlisting}[language=Python, frame=single]
+class HashSet:
+    def __init__(self):
+        # Create a list to use as the hash table
+        self.table = [None]*10
+
+    def add(self, item):
+        # Find the hash value
+        h = hash(item)
+        # Get the index
+        index = h % len(self.table)
+        print(index)
+
+        if self.table[index] == None:
+            # Generates a LinkedList
+            self.tabl[index] = LinkedList()
+        if item not in self.table[index]:
+            # Don't add the item if already present
+            self.table[index].add(item)
+        print(self.table[index])
+\end{lstlisting}
+
+\begin{center}
+  \rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\section{Complexity}
+\begin{itemize}
+  \item{Average time complexity of \textit{contains}, \textit{add}, and \textit{remove} is $O(1)$}
+  \item{Each operation operates on a linked list of about 1 element}
+  \item{If the table size is smaller than the number of items}
+  \begin{itemize}
+    \item{Then the basic operations become 4 times slower but is still $O(1)$}
+  \end{itemize}
+  \item{With some operations, you need to examine every entry in the linked list}
+  \begin{itemize}
+    \item{$O(k+n)$ where $k$ is the table size and $n$ is the size of the linked list}
+  \end{itemize}
+  \item{When the hash table gets crowded, performance deteriorates}
+  \begin{itemize}
+    \item{The load factor is the size of the set over the size of the table: $n/k$ and usually, we increase the hash table size if the load factor goes above say 0.75}
+    \item{Increasing the size of the table is expensive as each item's hash has to be recalculated}
+  \end{itemize}
+\end{itemize}
+
+\begin{center}
+  \rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\section{Hash Function}
+\begin{itemize}
+  \item{An ideal hash function gives a good range of values}
+  \begin{itemize}
+    \item{If we were hashing phone numbers, it would be bad to base the hash on the first three digits. If we did, then any phone number with the same area code would have the same hash}
+    \begin{itemize}
+      \item{There would be many collisions}
+    \end{itemize}
+  \end{itemize}
+  \item{\textit{hash(item)}}
+  \begin{itemize}
+    \item{Returns the hash code of the item}
+    \begin{itemize}
+      \item{It will be an integer}
+    \end{itemize}
+    \item{However, you may overwrtie the hash function}
+    \begin{itemize}
+      \item{\begin{verbatim}__hash__()\end{verbatim}}
+    \end{itemize}
+  \end{itemize}
+  \item{Ideally, the hash would use the contents of the item to generate the hash code}
+  \item{The \begin{verbatim}__hash__\end{verbatim} method would look like:}
+  \begin{lstlisting}[language=Python, frame=single]
+  def __hash__():
+      hashVal = 0
+      for c in self:
+          hashVal = hashVal + ord(c)
+
+      return hashVal
+  \end{lstlisting}
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,88 @@
+\documentclass{article}
+\title{Jumps}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+  \rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\section{Jumping}
+\begin{itemize}
+  \item{Normally, the PC register tells the CPU where the next instruction is}
+  \item{If you want your CPU to \textit{jump} to another place in the program, you use the \textbf{\textit{JMP}} instruction}
+  \item{For Example:}
+  \begin{itemize}
+    \item{You might want to write \textit{JMP 40}, to jump to memory location 40}
+    \item{However in SMS32, you cannot do this}
+    \item{If you want to jump to another section of code you must:}
+    \begin{enumerate}
+      \item{Identify that place with a \textit{label}}
+      \item{Write \textit{JMP label}}
+    \end{enumerate}
+  \end{itemize}
+  \item{Jumps can go either direction:}
+  \begin{itemize}
+    \item{Back up through the program}
+    \item{Further on in the program}
+  \end{itemize}
+\end{itemize}
+
+\begin{center}
+  \rule{0.5\textwidth}{0.4pt}
+\end{center}
+\pagebreak
+
+\section{Conditional Jumping}
+\begin{itemize}
+  \item{Rather than using the \textbf{\textit{JMP}} instruction which will jump the specified label no matter what, you can use a \textit{Conditinal Jump}}
+  \begin{enumerate}
+    \item{\textbf{\textit{JZ}}}
+    \begin{itemize}
+      \item{Only Jump if the \textit{Zero Flag} is set}
+    \end{itemize}
+    \item{\textbf{\textit{JNZ}}}
+    \begin{itemize}
+      \item{Only Jump if the \textit{Zero Flag} is \underline{Not} set}
+    \end{itemize}
+    \item{\textbf{\textit{JS}}}
+    \begin{itemize}
+      \item{Only Jump if the \textit{Sign Flag} is set}
+    \end{itemize}
+    \item{\textbf{\textit{JNS}}}
+    \begin{itemize}
+      \item{Only Jump if the \textit{Sign Flag} is \underline{Not} set}
+    \end{itemize}
+    \item{\textbf{\textit{JC}}}
+    \begin{itemize}
+      \item{Only Jump if the \textit{Carry Flag} is set}
+    \end{itemize}
+    \item{\textbf{\textit{JNC}}}
+    \begin{itemize}
+      \item{Only Jump if the \textit{Carry Flag} is \underline{Not} set}
+    \end{itemize}
+    \item{\textbf{\textit{JI}}}
+    \begin{itemize}
+      \item{Only Jump if the \textit{Interrupt Flag} is set}
+    \end{itemize}
+    \item{\textbf{\textit{JNI}}}
+    \begin{itemize}
+      \item{Only Jump if the \textit{Interrupt Flag} is \underline{Not} set}
+    \end{itemize}
+  \end{enumerate}
+\end{itemize}
+
+\begin{center}
+  \rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\section{Relative Jumps}
+\begin{itemize}
+  \item{The main drawback to using jumps is that you can only jump so far from the IP}
+  \item{Relative jumps mean that we don't say what memory location we jump to}
+  \item{Instead we say how far we want to jump from the current instruction}
+  \item{This is done using the \textbf{\textit{ORG}} instruction after using the \textbf{\textit{JMP}} instruction}
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,26 @@
+\documentclass{article}
+\title{Interrupts}
+
+\begin{document}
+\maketitle
+
+\begin{center}\rule{0.5\textwidth}{0.4pt}\end{center}
+
+\section{Interrupts}
+\begin{itemize}
+  \item{An interrupt is a signal to the CPU to}
+  \begin{enumerate}
+    \item{Stop what it's doing}
+    \item{Execute code somewhere else}
+    \item{Resume what is was doing before the interrupt}
+  \end{enumerate}
+  \item{There are 2 types of interrupt}
+  \begin{itemize}
+    \item{(Internal) Software interrupts}
+    \begin{itemize}
+      \item{this is done by using INT $number$, where $number$ is a hex value from 0x00 to 0xFF}
+    \end{itemize}
+    \item{(External) Hardware interrupts}
+  \end{itemize}
+\end{itemize}
+\end{document}

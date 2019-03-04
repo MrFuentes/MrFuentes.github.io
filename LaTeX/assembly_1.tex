@@ -1,0 +1,204 @@
+\documentclass{article}
+\title{Basic CPU architecture, Busses and Registers}
+
+\begin{document}
+  \maketitle
+
+  \begin{center}
+    \rule{0.5\textwidth}{.4pt}
+  \end{center}
+  \section{Microprocessor Simulation}
+  \begin{itemize}
+    \item{SMS32 is an 8-bit CPU Similar to the x86 family}
+    \item{Only has 256 bytes of memory}
+    \item{Some of the features of sms32}
+    \begin{itemize}
+      \item{8-bit CPU}
+      \item{Up to 256 I/O ports (only a few are realistically ever used)}
+    \end{itemize}
+  \end{itemize}
+  \begin{center}
+    \rule{0.5\textwidth}{.4pt}
+  \end{center}
+  \section{The CPU}
+  \begin{itemize}
+    \item{The brains of the computer}
+    \item{All calculations and decisions take place here}
+    \item{Has small pieces of storage called \textbf{\textit{registers}}}
+    \item{Has \textbf{\textit{Arithmetic and Logic Unit (ALU)}} where calculations are performed}
+    \item{The \textbf{\textit{ALU}} reads information from the registers, calculates and puts the results back into registers}
+    \item{MOV commands are used to move data between registers in the CPU and memory outside the CPU}
+  \end{itemize}
+
+  \begin{center}
+    \rule{0.5\textwidth}{0.4pt}
+  \end{center}
+  \section{General Purpose Registers}
+  \begin{itemize}
+    \item{SMS32 has four general purpose registers}
+    \begin{itemize}
+      \item{AL}
+      \item{BL}
+      \item{CL}
+      \item{DL}
+    \end{itemize}
+    \item{The names come from the real x86 CPU}
+    \item{Each of these registers is 8-bits(one byte) wide}
+    \item{Each register can hold:}
+    \begin{itemize}
+      \item{Unsigned numbers from 0 to 255}
+      \item{Signed numbers from -128 to +127}
+      \item{These registers are temporary storage locations}
+    \end{itemize}
+  \end{itemize}
+
+  \begin{center}
+    \rule{0.5\textwidth}{.4pt}
+  \end{center}
+  \section{Special Registers}
+  \begin{itemize}
+    \item{the \textbf{\textit{Program Counter (PC)}}}
+    \begin{itemize}
+      \item{Also called the \textbf{\textit{Instruction Pointer (IP)}}}
+      \item{Instructions (code) are stored in memory}
+      \item{This register tells the CPU where in memory the next instruction is to be taken from}
+      \item{When the CPU gets an instruction, the PC is changed to point to the next instruction}
+      \item{Some instructions such as CALL and INT can change the PC more drasctically}
+    \end{itemize}
+    \item{The \textbf{\textit{Status Register (SR)}}}
+    \begin{itemize}
+      \item{This should be viewed as 8 individual bits, or switches}
+      \item{Each of these bits has a special meaning (though some are unused )}
+      \item{The Z bit (Zero Flag) is set to 1 if the answer for a calculation is zero}
+      \item{The S bit (Sign Flag) is set to 1 if the answer for a calculation is negative}
+      \item{The O bit (Overflow Flag) is set to 1 if the answer for a signed calculation was too big}
+    \end{itemize}
+    \pagebreak
+    \item{The \textbf{\textit{Stack Pointer (SP)}}}
+    \begin{itemize}
+      \item{The stack is an area of memory which uses a Last-In-First-Out )(LIFO) rule}
+      \item{The SP \textit{points} to the next free location in memory}
+      \item{The simulator's stack starts at memory location BF}
+      \item{The stack \textit{grows} towards memory location 0}
+      \item{Adding data to the stack is called a \textbf{\textit{Push}}}
+      \item{Removing data from the stack is called a \textbf{\textit{Pop}}}
+      \item{Each time a push or pop happens, the SP is updated}
+    \end{itemize}
+  \end{itemize}
+
+  \begin{center}
+    \rule{0.5\textwidth}{0.4pt}
+  \end{center}
+  \section{Random Access Memory}
+  \begin{itemize}
+    \item{This simulator has only 256 locations in RAM}
+    \item{Each location can only store one byte}
+    \item{The locations are numbered from 00 to FF in Hex}
+    \item{In the assembler, square brackets ([ ]) around a number have a special meaning}
+    \begin{itemize}
+      \item{45 means the number 45}
+      \item{[45] means the number stored at memroy location 45}
+    \end{itemize}
+  \end{itemize}
+
+  \begin{center}
+    \rule{.5\textwidth}{.4pt}
+  \end{center}
+  \section{Busses}
+  \begin{itemize}
+    \item{These are a set of wires used to cary out information around in the computer}
+    \item{You can see them on the printed circuit board (PCB) as parallel tracks of copper}
+    \item{For example, between the CPU and memory, there is a set of wires called the Data Bus}
+    \item{There are three busses we consider:}
+    \begin{itemize}
+      \item{Data Bus}
+      \item{Address Bus}
+      \item{Control Bus}
+    \end{itemize}
+  \end{itemize}
+
+  \begin{center}
+    \rule{0.5\textwidth}{.4pt}
+  \end{center}
+  \section{The Data Bus}
+  \begin{itemize}
+    \item{Used to transfer data between the CPU and memory}
+    \item{\textbf{Usually} related to the size of registers}
+    \item{A CPU with 8-bit registers will have 8 lines on the data bus}
+    \item{There are exceptions to this rule}
+    \begin{itemize}
+      \item{The 32-bit Pentium had a 64-bit data bus}
+    \end{itemize}
+    \item{The width of the data bus (number of lines) conrols how much data can be transferred at once between CPU and memory}
+  \end{itemize}
+
+  \begin{center}
+    \rule{0.5\linewidth}{.4pt}
+  \end{center}
+  \section{The Address Bus}
+  \begin{itemize}
+    \item{When the CPU wants to send information to memory, it needs to specify:}
+    \begin{itemize}
+      \item{\textit{What} information to store}
+      \item{\textit{Where} the information should be stored}
+    \end{itemize}
+    \item{When the CPU wants to read from memory, it has to specify:}
+    \begin{itemize}
+      \item{\textit{Where} to read from}
+    \end{itemize}
+    \item{The address bus is how the CPU conveys these memory locations}
+    \item{The address bus differs from the data bus because:}
+    \begin{itemize}
+      \item{Data can be sent in both directions on the data bus (bi-directional)}
+      \item{The width of the address bus determines the maximum number of locations the CPU can send out}
+      \item{One address line can specify $2^1$ addresses}
+      \begin{itemize}
+        \item{0 or 1}
+      \end{itemize}
+      \item{Two address lines can specify $2^2$ addresses}
+      \begin{itemize}
+        \item{00, 01, 10, or 11}
+      \end{itemize}
+      \item{Three address lines can specify $2^3$ addresses}
+      \begin{itemize}
+        \item{000, 001, 010, 011, 100, 101, 110, 111}
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+
+  \begin{center}
+    \rule{0.5\textwidth}{0.4pt}
+  \end{center}
+  \section{The Control Bus}
+  \begin{itemize}
+    \item{Has a wire to determine whether to access RAM or IO ports}
+    \item{Also has a wire to determine whether data is being read or written}
+    \item{The CPU is reading data when it flows to the CPU}
+    \item{The CPU is writing data when it flows away from the CPU to RAM or the IO ports}
+    \item{Has a system clock wire}
+    \item{Carries regular pulses to allow synchronization of various components}
+    \item{Clock speeds around 2-4 billion cycles per second are typical}
+  \end{itemize}
+
+  \begin{center}
+    \rule{0.5\textwidth}{0.4pt}
+  \end{center}
+  \section{Hardware Interrupts}
+  \begin{itemize}
+    \item{Hardware Interrupts require at least one wire}
+    \item{These wires are considered part of the control bus}
+    \item{These enable the CPU to respond to external events}
+    \begin{itemize}
+      \item{For Example, printers running out of paper}
+    \end{itemize}
+    \item{When the interrupt happens}
+    \begin{itemize}
+      \item{The CPU pauses it's current task}
+      \item{It runs some machine code in response to the interrupt}
+      \item{It then \textit{(Usually)} continues with the original task}
+    \end{itemize}
+  \end{itemize}
+  \begin{center}
+    \rule{0.5\textwidth}{0.4pt}
+  \end{center}
+\end{document}
